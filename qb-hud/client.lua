@@ -1169,16 +1169,13 @@ end)
 
 
 
-
-
-
-Citizen.CreateThread(function()
+-- Gears Loop
+CreateThread(function()
     while true do
-        local player = GetPlayerPed(-1)
+        local player = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(player, false)
 
         if IsPedInAnyVehicle(player, false) then
-        --print("is a car beu")
             local rpmlol = GetVehicleCurrentRpm(vehicle)
             local selectedgear = getSelectedGear()
             local gearlol = getinfo(selectedgear)
@@ -1189,6 +1186,6 @@ Citizen.CreateThread(function()
                 gear = gearlol
             })
         end
-        Citizen.Wait(100)
+        Wait(100)
     end
 end)
